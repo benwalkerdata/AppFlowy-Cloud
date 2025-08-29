@@ -34,11 +34,11 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-postgres}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
       - POSTGRES_HOST=${POSTGRES_HOST:-postgres}
-    healthcheck:
-      test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}" ]
-      interval: 5s
-      timeout: 5s
-      retries: 12
+    #healthcheck:
+    #  test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}" ]
+    #  interval: 5s
+    #  timeout: 5s
+    #  retries: 12
     deploy:
       placement:
         constraints:
@@ -204,12 +204,12 @@ services:
       - AI_MINIO_URL=${APPFLOWY_S3_MINIO_URL}
       - AI_APPFLOWY_HOST=${APPFLOWY_BASE_URL}
       - APPFLOWY_GOTRUE_JWT_SECRET=${GOTRUE_JWT_SECRET}
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:5001/health" ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
+    #healthcheck:
+    #  test: [ "CMD", "curl", "-f", "http://localhost:5001/health" ]
+    #  interval: 30s
+    #  timeout: 10s
+    #  retries: 3
+    #  start_period: 40s
    # depends_on:
    #   postgres:
    #     condition: service_healthy
