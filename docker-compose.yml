@@ -65,6 +65,8 @@ services:
  #     timeout: 5s
  #     retries: 12
     image: appflowyinc/gotrue:${GOTRUE_VERSION:-latest}
+    ports:
+      - "9999:9999"
     deploy:
       placement:
         constraints:
