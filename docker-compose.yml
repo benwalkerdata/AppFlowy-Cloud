@@ -3,15 +3,15 @@
 services:
   nginx:
     restart: on-failure
-    image: nginx
+    image: nginx:latest
     ports:
       - ${NGINX_PORT:-85}:80   # Disable this if you are using TLS
       - ${NGINX_TLS_PORT:-433}:443
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
-      - ./nginx/ssl/private_key.key:/etc/nginx/ssl/private_key.key
-
+      - /home/ben/Appflowy-cloud/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /home/ben/Appflowy-cloud/nginx/ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
+      - /home/ben/Appflowy-cloud/nginx/ssl/private_key.key:/etc/nginx/ssl/private_key.key
+    
   # You do not need this if you have configured to use your own s3 file storage
 #  minio:
 #    restart: on-failure
