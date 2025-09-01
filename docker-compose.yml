@@ -1,16 +1,16 @@
 # Essential services for AppFlowy Cloud
 
 services:
-  nginx:
-    restart: on-failure
-    image: nginx:latest
-    ports:
-      - ${NGINX_PORT:-85}:80   # Disable this if you are using TLS
-      - ${NGINX_TLS_PORT:-433}:443
-    volumes:
-      - /home/ben/AppFlowy-cloud/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /home/ben/AppFlowy-cloud/nginx/ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
-      - /home/ben/AppFlowy-cloud/nginx/ssl/private_key.key:/etc/nginx/ssl/private_key.key
+  #nginx:
+  #  restart: on-failure
+  #  image: nginx:latest
+  #  ports:
+  #    - ${NGINX_PORT:-85}:80   # Disable this if you are using TLS
+  #    - ${NGINX_TLS_PORT:-433}:443
+  #  volumes:
+  #    - /home/ben/AppFlowy-cloud/nginx/nginx.conf:/etc/nginx/nginx.conf
+  #    - /home/ben/AppFlowy-cloud/nginx/ssl/certificate.crt:/etc/nginx/ssl/certificate.crt
+  #    - /home/ben/AppFlowy-cloud/nginx/ssl/private_key.key:/etc/nginx/ssl/private_key.key
     
   # You do not need this if you have configured to use your own s3 file storage
 #  minio:
@@ -252,6 +252,9 @@ services:
   appflowy_web:
     restart: on-failure
     image: appflowyinc/appflowy_web:${APPFLOWY_WEB_VERSION:-latest}
+    ports:
+      - "85:80"
+      - "433:443"
     deploy:
       placement:
         constraints:
